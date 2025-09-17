@@ -25,11 +25,19 @@ const Header: React.FC = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
+          <Button 
+            variant="ghost" 
+            className="text-muted-foreground hover:text-foreground"
+            onClick={() => window.open('https://docs.lovable.dev', '_blank')}
+          >
             <FileText className="w-4 h-4 mr-2" />
             Docs
           </Button>
-          <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
+          <Button 
+            variant="ghost" 
+            className="text-muted-foreground hover:text-foreground"
+            onClick={() => window.open('https://github.com', '_blank')}
+          >
             <Github className="w-4 h-4 mr-2" />
             GitHub
           </Button>

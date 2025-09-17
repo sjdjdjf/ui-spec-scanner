@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import URLInputForm from './URLInputForm';
+import HTMLInput from './HTMLInput';
 import JSONUpload from './JSONUpload';
 import AnalysisProgress from './AnalysisProgress';
 import { useDesignGuardStore } from '@/store/designGuardStore';
@@ -39,19 +40,31 @@ const AnalyzeSection: React.FC = () => {
           </div>
 
           {/* Form grid */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <URLInputForm />
-            </motion.div>
+          <div className="space-y-8 mb-8">
+            {/* Input methods */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <URLInputForm />
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                <HTMLInput />
+              </motion.div>
+            </div>
             
+            {/* JSON Upload - full width */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
             >
               <JSONUpload />
             </motion.div>

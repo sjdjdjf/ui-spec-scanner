@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useDesignGuardStore } from '@/store/designGuardStore';
+import { useToast } from '@/hooks/use-toast';
 
 const AnalysisProgress: React.FC = () => {
   const { 
@@ -14,12 +15,33 @@ const AnalysisProgress: React.FC = () => {
     analysisProgress, 
     startAnalysis 
   } = useDesignGuardStore();
+  
+  const { toast } = useToast();
 
   const canAnalyze = websiteUrl && designSystemDNA && !isAnalyzing;
 
-  const handleStartAnalysis = () => {
+  const handleStartAnalysis = async () => {
     if (canAnalyze) {
-      startAnalysis();
+      toast({
+        title: "🚀 Real Analysis Started!",
+        description: websiteUrl.startsWith('data:') 
+          ? "Analyzing your HTML/CSS code with real validation rules."
+          : "Fetching website content and running actual design system validation.",
+      });
+      
+      try {
+        await startAnalysis();
+        toast({
+          title: "✅ Analysis Complete",
+          description: "Your design system validation report is ready!",
+        });
+      } catch (error) {
+        toast({
+          title: "❌ Analysis Failed", 
+          description: error.message || "Something went wrong during analysis.",
+          variant: "destructive"
+        });
+      }
     }
   };
 

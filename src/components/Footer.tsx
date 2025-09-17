@@ -53,10 +53,20 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Connect</h3>
             <div className="flex space-x-2">
-              <Button variant="ghost" size="sm" className="hover:bg-accent">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="hover:bg-accent"
+                onClick={() => window.open('https://github.com', '_blank')}
+              >
                 <Github className="w-4 h-4" />
               </Button>
-              <Button variant="ghost" size="sm" className="hover:bg-accent">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="hover:bg-accent"
+                onClick={() => window.open('https://docs.lovable.dev', '_blank')}
+              >
                 <FileText className="w-4 h-4" />
               </Button>
             </div>
@@ -69,12 +79,18 @@ const Footer: React.FC = () => {
             © 2024 DesignGuard. Released under the MIT License.
           </p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <a href="#privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <button 
+              onClick={() => window.open('#privacy', '_blank')}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
               Privacy Policy
-            </a>
-            <a href="#terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </button>
+            <button 
+              onClick={() => window.open('#terms', '_blank')}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
               Terms of Service
-            </a>
+            </button>
           </div>
         </div>
       </div>

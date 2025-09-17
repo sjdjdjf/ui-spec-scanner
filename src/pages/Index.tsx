@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import FeatureHighlight from '@/components/FeatureHighlight';
 import AnalyzeSection from '@/components/AnalyzeSection';
 import ResultsReport from '@/components/ResultsReport';
 import Footer from '@/components/Footer';
@@ -23,7 +24,12 @@ const Index = () => {
       
       <main className="relative">
         {/* Hero Section - always visible */}
-        {!currentReport && !isAnalyzing && <HeroSection />}
+        {!currentReport && !isAnalyzing && (
+          <>
+            <HeroSection />
+            <FeatureHighlight />
+          </>
+        )}
         
         {/* Analysis Section */}
         <AnalyzeSection />
